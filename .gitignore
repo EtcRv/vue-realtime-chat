@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+
+# sequelize
+server/chatapp.sqlite
+
+#package-lock
+*package-lock.json
+
+.idea
