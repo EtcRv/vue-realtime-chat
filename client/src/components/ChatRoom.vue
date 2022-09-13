@@ -19,7 +19,10 @@ import Chat from './Chat.vue';
 export default {
     name: "ChatRoom",
     created() {
-        SocketioService.setupSocketConnection();
+      if(this.$store.state.isUserLoggedIn){
+        const token = this.$store.state.token
+        SocketioService.setupSocketConnection(token);
+      }  
     },
     components: { PeopleList, Chat }
 }

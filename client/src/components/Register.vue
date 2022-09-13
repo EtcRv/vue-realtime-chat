@@ -64,13 +64,13 @@ import AuthenticationServices from '@/services/AuthenticationServices';
 export default {
     name: "Register",
     data() {
-    return {
-        name: "",
-        email: "",
-        password: "",
-        avatar: "",
-        error:null
-    };
+      return {
+          name: "",
+          email: "",
+          password: "",
+          avatar: "",
+          error:null
+      };
     },
     methods: {
         async register() {
@@ -94,7 +94,11 @@ export default {
             
         },
         async getFirstFriendIdChat() {
-            const allUsers = (await AuthenticationServices.getAllUsers()).data;
+            let allUsers = (await AuthenticationServices.getAllUsers()).data;
+            if(allUsers.length == 1) {
+                this.$store.dispatch('createBotChat')
+            }
+            allUsers = (await AuthenticationServices.getAllUsers()).data;
             for(let user of allUsers) {
                 if(user.id != this.$store.state.user.id) {
                     return user.id

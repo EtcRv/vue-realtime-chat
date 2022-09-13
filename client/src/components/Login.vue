@@ -66,8 +66,11 @@ export default {
             
         },
         async getFirstFriendIdChat() {
-            const allUsers = (await AuthenticationServices.getAllUsers()).data;
-            
+            let allUsers = (await AuthenticationServices.getAllUsers()).data;
+            if(allUsers.length == 1) {
+                this.$store.dispatch('createBotChat')
+            }
+            allUsers = (await AuthenticationServices.getAllUsers()).data;
             for(let user of allUsers) {
                 if(user.id != this.$store.state.user.id) {
                     return user.id

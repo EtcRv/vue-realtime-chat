@@ -6,8 +6,12 @@ class SocketioService {
   socket;
   constructor() {}
 
-  setupSocketConnection() {
-    this.socket = io(URL_SOCKET);
+  setupSocketConnection(token) {
+    this.socket = io(URL_SOCKET, {
+      auth: {
+        token: token,
+      },
+    });
   }
 
   // emitSocketEvent(name, data) {
