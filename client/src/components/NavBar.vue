@@ -27,7 +27,7 @@
 // import AuthenticationServices from '@/services/AuthenticationServices';
 
 export default {
-    name: "Header",
+    name: "HeaderComponent",
     data() {
         return {
             chatUrl: ''

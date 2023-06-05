@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                    <img :src="userChatWith.avatar" alt="avatar" >
+                    <img :src="userChatWith.avatar" alt="avatar" style="border-radius: 50%; height: 64px; width: 64px;" >
                     </a>
                     <div class="chat-about">
                     <h6 class="m-b-0">{{userChatWith.name}}</h6>
@@ -23,7 +23,7 @@
             <ul class="m-b-0">
                 <li class="clearfix" v-for="singleMessage,idx in allMessage" :key="idx">
                     <div v-if="singleMessage.send_id == this.$store.state.user.id">
-                        <div class="message-data text-right">
+                        <div class="message-data" style="text-align: right;">
                             <span class="message-data-time">{{singleMessage.time}}</span>
                         </div>
                         <div class="message other-message float-right">
@@ -31,15 +31,15 @@
                         </div>
                     </div>
                     <div v-else>
-                        <div class="message-data text-left">
+                        <div class="message-data" style="text-align: left;">
                             <span class="message-data-time ">{{singleMessage.time}}</span>
                         </div>
-                        <div class="message my-message float-left">{{singleMessage.message}}</div>
+                        <div class="message my-message" style="float: left">{{singleMessage.message}}</div>
                     </div>
                 </li>
             </ul>
         </div>
-        <div class="chat-message clearfix">
+        <div class="chat-message clearfix" style="width: 100%;">
             <div class="input-group mb-0">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="input-send" @click="sendData"><i class="fa fa-send"></i></span>
@@ -57,7 +57,7 @@ import AuthenticationServices from '@/services/AuthenticationServices'
 import MessageServices from '@/services/MessageServices'
 
 export default {
-    name: "Chat",
+    name: "ChatComponent",
     data() {
         return {
             allMessage: [],
@@ -100,7 +100,7 @@ export default {
         async storeMessageToDB(data) {
             try{
                 const message = await MessageServices.sendMessage(data)
-                // console.log("message send: ", message)
+                console.log("message send: ", message)
             }catch(err) {
                 console.log( err)
             }
@@ -169,18 +169,18 @@ export default {
 <style scoped>
 .chat .chat-header {
 padding: 15px 20px;
-border-bottom: 2px solid #f4f7f6
+border-bottom: 2px solid #f4f7f6;
 }
 
 .chat .chat-header img {
 float: left;
 border-radius: 40px;
-width: 40px
+width: 40px;
 }
 
 .chat .chat-header .chat-about {
 float: left;
-padding-left: 10px
+padding-left: 10px;
 }
 
 .chat .chat-history {
@@ -191,30 +191,30 @@ overflow-y: scroll;
 }
 
 .chat .chat-history ul {
-padding: 0
+padding: 0;
 }
 
 .chat .chat-history ul li {
 list-style: none;
-margin-bottom: 30px
+margin-bottom: 30px;
 }
 
 .chat .chat-history ul li:last-child {
-margin-bottom: 0px
+margin-bottom: 0px;
 }
 
 .chat .chat-history .message-data {
-margin-bottom: 15px
+margin-bottom: 15px;
 }
 
 .chat .chat-history .message-data img {
 border-radius: 40px;
-width: 40px
+width: 40px;
 }
 
 .chat .chat-history .message-data-time {
 color: #434651;
-padding-left: 6px
+padding-left: 6px;
 }
 
 .chat .chat-history .message {
@@ -224,7 +224,7 @@ line-height: 26px;
 font-size: 16px;
 border-radius: 7px;
 display: inline-block;
-position: relative
+position: relative;
 }
 
 .chat .chat-history .message:after {
@@ -238,11 +238,11 @@ position: absolute;
 pointer-events: none;
 border-bottom-color: #fff;
 border-width: 10px;
-margin-left: -10px
+margin-left: -10px;
 }
 
 .chat .chat-history .my-message {
-background: #efefef
+background: #efefef;
 }
 
 .chat .chat-history .my-message:after {
@@ -256,12 +256,12 @@ position: absolute;
 pointer-events: none;
 border-bottom-color: #efefef;
 border-width: 10px;
-margin-left: -10px
+margin-left: -10px;
 }
 
 .chat .chat-history .other-message {
 background: #e8f1f3;
-text-align: right
+text-align: right;
 }
 
 /* .chat .chat-history .other-message:after {
@@ -270,13 +270,13 @@ left: 93%
 } */
 
 .chat .chat-message {
-padding: 20px
+padding: 20px;
 }
 
 
 
 .float-right {
-float: right
+float: right;
 }
 
 .clearfix:after {
@@ -285,7 +285,7 @@ display: block;
 font-size: 0;
 content: " ";
 clear: both;
-height: 0
+height: 0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -293,36 +293,36 @@ height: 0
 
 
 .chat .chat-header {
-    border-radius: 0.55rem 0.55rem 0 0
+    border-radius: 0.55rem 0.55rem 0 0;
 }
 
 .chat-history {
     height: 300px;
-    overflow-x: auto
+    overflow-x: auto;
 }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 .chat-list {
     height: 650px;
-    overflow-x: auto
+    overflow-x: auto;
 }
 
 .chat-history {
     height: 600px;
-    overflow-x: auto
+    overflow-x: auto;
 }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
 .chat-list {
     height: 480px;
-    overflow-x: auto
+    overflow-x: auto;
 }
 
 .chat-history {
     height: calc(100vh - 350px);
-    overflow-x: auto
+    overflow-x: auto;
 }
 }
 </style>

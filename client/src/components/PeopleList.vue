@@ -6,9 +6,9 @@
             </div>
             <input type="text" class="form-control" placeholder="Search..." v-model="search">
         </div>
-        <ul class="list-unstyled chat-list mt-2 mb-0">
-            <li v-for="people in peoples" :key="people.id" class="clearfix" @click="changeUserChat(people.id)">
-                <img :src="people.avatarUrl" alt="avatar" />
+        <ul class="chat-list" style="margin-top: 8px;">
+            <li v-for="people in peoples" :key="people.id" class="clearfix" style="margin-top: 2px; display: flex;" @click="changeUserChat(people.id)">
+                <img :src="people.avatarUrl" style="border-radius: 50%; height: 64px; width: 64px;" alt="avatar" />
                 <div class="about">
                     <div class="name">{{people.name}}</div>
                 </div>
@@ -87,35 +87,36 @@ export default {
 
 .people-list .chat-list li:hover {
     background: #efefef;
-    cursor: pointer
+    cursor: pointer ;
 }
 
 .people-list .chat-list li.active {
-    background: #efefef 
+    background: #efefef ;
 }
 
 .people-list .chat-list li .name {
-    font-size: 15px
+    font-size: 15px;
+    justify-content: center;
 }
 
 .people-list .chat-list img {
     width: 45px;
-    border-radius: 50%
+    border-radius: 50%;
 }
 
 .people-list img {
     float: left;
-    border-radius: 50%
+    border-radius: 50%;
 }
 
 .people-list .about {
     float: left;
-    padding-left: 8px
+    padding-left: 12px;
 }
 
 .people-list .status {
     color: #999;
-    font-size: 13px
+    font-size: 13px;
 }
 
 .online,
